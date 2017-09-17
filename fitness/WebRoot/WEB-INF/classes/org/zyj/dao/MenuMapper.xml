@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.zyj.dao.MenuMapper">
+	<resultMap id="BaseResultMap" type="org.zyj.vo.Menu">
+		<id column="mid" property="mid" jdbcType="INTEGER" />
+		<result column="mname" property="mname" jdbcType="VARCHAR" />
+		<result column="pid" property="pid" jdbcType="VARCHAR" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="target" property="target" jdbcType="VARCHAR" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+		<result column="isshow" property="isshow" jdbcType="CHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		mid, mname, pid, path, target, icon, isshow
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_menu
+		where mid = #{mid,jdbcType=INTEGER}
+	</select>
+
+	<select id="getShowMenu" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_menu
+		where isshow='1'
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_menu
+		where mid = #{mid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="org.zyj.vo.Menu">
+		insert into t_menu (mid, mname, pid,
+		path, target, icon,
+		isshow)
+		values (#{mid,jdbcType=INTEGER}, #{mname,jdbcType=VARCHAR},
+		#{pid,jdbcType=VARCHAR},
+		#{path,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
+		#{isshow,jdbcType=CHAR})
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="org.zyj.vo.Menu">
+		update t_menu
+		set mname = #{mname,jdbcType=VARCHAR},
+		pid = #{pid,jdbcType=VARCHAR},
+		path = #{path,jdbcType=VARCHAR},
+		target = #{target,jdbcType=VARCHAR},
+		icon = #{icon,jdbcType=VARCHAR},
+		isshow = #{isshow,jdbcType=CHAR}
+		where mid = #{mid,jdbcType=INTEGER}
+	</update>
+</mapper>
