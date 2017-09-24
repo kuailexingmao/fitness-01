@@ -21,7 +21,7 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<%@ include file="jslink.jsp"%>
+<jsp:include page="/main/jslink.jsp"></jsp:include>
 <script type="text/javascript">
 	$(function() {
 		//设置树的节点对象
@@ -44,12 +44,12 @@
 			callback : {
 				onClick : function(e, id, node) {
 					var zTree = $.fn.zTree.getZTreeObj("tree");
-					if (node.isParent) {
+					/* if (node.isParent) {
 						zTree.expandNode();
 					} else {
 						addTabs(node.mname, node.path);
-					}
-
+					} */
+					addTabs(node.mname, node.path);
 				}
 			}
 		};

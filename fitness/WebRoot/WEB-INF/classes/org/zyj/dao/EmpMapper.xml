@@ -27,6 +27,21 @@
 		and password= #{password,jdbcType=VARCHAR}
 		and isboss= #{isboss,jdbcType=CHAR}
 	</select>
+	
+	<select id="getListEmp" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_emp t
+		order by t.ename desc
+		limit #{start},#{size}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select
+		count(1)
+		from t_emp
+	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from t_emp
 		where eid = #{eid,jdbcType=INTEGER}
