@@ -42,6 +42,13 @@
 		from t_emp
 	</select>
 	
+	<select id="findEmpByEid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_emp t where 
+		t.eid=#{eid,jdbcType=INTEGER}
+	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from t_emp
 		where eid = #{eid,jdbcType=INTEGER}
@@ -55,7 +62,7 @@
 		#{tel,jdbcType=VARCHAR},
 		#{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{jointime,jdbcType=DATE},
 		#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-		#{lastupdatetime,jdbcType=TIMESTAMP},
+		SYSDATE(),
 		#{isboss,jdbcType=CHAR})
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="org.zyj.vo.Emp">
@@ -67,7 +74,7 @@
 		jointime = #{jointime,jdbcType=DATE},
 		username = #{username,jdbcType=VARCHAR},
 		password = #{password,jdbcType=VARCHAR},
-		lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP},
+		lastupdatetime = SYSDATE(),
 		isboss = #{isboss,jdbcType=CHAR}
 		where eid = #{eid,jdbcType=INTEGER}
 	</update>

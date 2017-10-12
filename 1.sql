@@ -57,11 +57,11 @@ CREATE TABLE `t_emp` (
   `lastupdatetime` datetime DEFAULT NULL COMMENT '最后修改时间',
   `isboss` char(2) NOT NULL DEFAULT '0' COMMENT '判断是否为管理0不是1是',
   PRIMARY KEY (`eid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_emp` */
 
-insert  into `t_emp`(`eid`,`ename`,`tel`,`address`,`email`,`jointime`,`username`,`password`,`lastupdatetime`,`isboss`) values (1,'张三','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs','111aaa','2017-09-07 21:45:31','1'),(2,'李四','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis','111aaa','2017-09-07 21:45:31','0'),(3,'张三1','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs1','111aaa','2017-09-07 21:45:31','1'),(4,'李四1','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis1','111aaa','2017-09-07 21:45:31','0'),(5,'李四2','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis2','111aaa','2017-09-07 21:45:31','0'),(6,'李四4','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis4','111aaa','2017-09-07 21:45:31','0'),(7,'李四3','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis3','111aaa','2017-09-07 21:45:31','0'),(8,'张三2','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs2','111aaa','2017-09-07 21:45:31','1'),(9,'李四5','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis5','111aaa','2017-09-07 21:45:31','0'),(10,'李四6','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis6','111aaa','2017-09-07 21:45:31','0'),(11,'李四7','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis7','111aaa','2017-09-07 21:45:31','0'),(12,'李四8','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis8','111aaa','2017-09-07 21:45:31','0');
+insert  into `t_emp`(`eid`,`ename`,`tel`,`address`,`email`,`jointime`,`username`,`password`,`lastupdatetime`,`isboss`) values (1,'张三','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs','111aaa','2017-09-07 21:45:31','1'),(2,'李四','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis','111aaa','2017-09-07 21:45:31','0'),(3,'张三1','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs1','111aaa','2017-09-07 21:45:31','1'),(4,'张三2','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs2','111aaa','2017-09-07 21:45:31','1'),(5,'张三4','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs3','111aaa','2017-09-07 21:45:31','1'),(6,'张三3','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','zhangs4','111aaa','2017-09-07 21:45:31','1'),(7,'李四5','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis111','111aaa','2017-10-08 14:26:46','0'),(8,'李四6','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis222','111aaa','2017-10-08 14:38:17','0'),(9,'李四7','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis3','111aaa','2017-09-07 21:45:31','0'),(10,'李四8','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis4','111aaa','2017-10-08 14:38:04','0'),(13,'李四9','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis5','111aaa','2017-09-07 21:45:31','0'),(14,'李四10','13254687895','河南省郑州市金水区','123@qq.com','2017-09-07','lis6','111aaa','2017-09-07 21:45:31','0'),(15,'王五','13526485545','郑州市金水区黄河路','123@qq.com','2017-10-17','wangw','111aaa','2017-10-08 15:42:34','0');
 
 /*Table structure for table `t_menu` */
 
@@ -76,11 +76,11 @@ CREATE TABLE `t_menu` (
   `icon` varchar(255) DEFAULT NULL COMMENT '菜单图片',
   `isshow` char(2) NOT NULL DEFAULT '1' COMMENT '是否显示0不显示1显示',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_menu` */
 
-insert  into `t_menu`(`mid`,`mname`,`pid`,`path`,`target`,`icon`,`isshow`) values (1,'员工管理','0','./emp/toListEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(2,'添加员工','1','./emp/addEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(3,'删除员工','1',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(4,'修改员工','1',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(5,'客户管理','0',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(6,'添加客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(7,'删除客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(8,'修改客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1');
+insert  into `t_menu`(`mid`,`mname`,`pid`,`path`,`target`,`icon`,`isshow`) values (1,'员工管理','0','./emp/toListEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(2,'添加员工','1','./emp/toAddEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(5,'客户管理','0',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(6,'添加客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1');
 
 /*Table structure for table `t_paycost` */
 

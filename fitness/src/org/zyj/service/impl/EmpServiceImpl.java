@@ -30,6 +30,27 @@ public class EmpServiceImpl implements EmpService {
 		dataEmp.setTotal(total);
 		return dataEmp;
 	}
+
+	@Override
+	public void deleteEmp(Integer eid) {
+		empMapperDao.deleteByPrimaryKey(eid);
+	}
+
+	@Override
+	public Emp findEmpByEid(Integer eid) {
+		Emp empByEid = empMapperDao.findEmpByEid(eid);
+		return empByEid;
+	}
+
+	@Override
+	public void updateEmp(Emp emp) {
+		empMapperDao.updateByPrimaryKey(emp);
+	}
+
+	@Override
+	public void addEmp(Emp emp) {
+		empMapperDao.insert(emp);
+	}
 	
 	
 }

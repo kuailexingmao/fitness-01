@@ -11,7 +11,9 @@ public interface EmpMapper {
     int insert(Emp record);
 
     Emp checkEmp(Emp emp);
-
+    
+    Emp findEmpByEid(Integer eid);
+    
     int updateByPrimaryKey(Emp record);
 
 	List<Emp> getListEmp(Map<String, Object> map);

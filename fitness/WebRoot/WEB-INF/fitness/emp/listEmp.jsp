@@ -36,10 +36,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        {field:"tel",title:"联系方式",width:100},    
 			        {field:"address",title:"联系地址",width:100},
 			        {field:"email",title:"邮箱地址",width:100},
-			        {field:"jointime",title:"入职时间",width:100},
+			        {field:"jointime",title:"入职时间",width:100,
+			        	formatter: function(value,row,index){
+			        		return dateFmt(row.jointime);
+			        	}
+			        },
 			        {field:"username",title:"登录账号",width:100},
 			        {field:"password",title:"登陆密码",width:100},
-			        {field:"lastupdatetime",title:"最后修改时间",width:100},
+			        {field:"lastupdatetime",title:"最后修改时间",width:100,
+			        	formatter: function(value,row,index){
+			        		return dateFmtss(row.lastupdatetime);
+			        	}
+			        },
 			        {field:"isboss",title:"是否管理",width:100,
 			        	formatter: function(value,row,index){
 			        		if(row.isboss == "1"){
@@ -51,7 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        },
 			        {field:'caozuo',title:'操作', width:80,
 						formatter: function(value,row,index){
-							return "<a href='javascript:void(0)' onclick='del("+row.id+")'>删除</a>";
+							return "<a href='javascript:void(0)' onclick='del("+row.eid+")'>删除</a>"+
+							"&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick='update("+row.eid+")'>修改</a>";
 						}
 					}
 			    ]]    
@@ -61,9 +70,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function del(id){
 			$.messager.confirm('确认','您确认想要删除记录吗？',function(r){    
 			    if (r){    
-			        alert('确认删除');    
+			        location.href="<%=request.getContextPath() %>/emp/deleteEmp.do?eid="+id;  
 			    }    
 			});  
+		}
+		
+		function update(id){
+			location.href="<%=request.getContextPath() %>/emp/toUpdateEmp.do?eid="+id;  
+		}
+		
+		
+		function dateFmt(shijian){
+			var time = new Date(shijian);
+		   	var year = time.getFullYear();  //年  
+		   	var month = time.getMonth() + 1;  //月  
+	        var day = time.getDate();         //日  
+	        var hh = time.getHours();       //时  
+	        var mm = time.getMinutes();    //分  
+	        var ss = time.getSeconds();    //秒
+	        var dateTimeStr= year + "-" +month + "-" + day ; 
+		  return dateTimeStr;
+		}
+		
+		function dateFmtss(shijian){
+			var time = new Date(shijian);
+		   	var year = time.getFullYear();  //年  
+		   	var month = time.getMonth() + 1;  //月  
+	        var day = time.getDate();         //日  
+	        var hh = time.getHours();       //时  
+	        var mm = time.getMinutes();    //分  
+	        var ss = time.getSeconds();    //秒
+	        var dateTimeStr= year + "-" +month + "-" + day+" "+hh+":"+mm+":"+ss; 
+		  return dateTimeStr;
 		}
 	</script>
   </head>

@@ -26,40 +26,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	 
  	 <script type="text/javascript">
  	 	$(function(){
+	 	 	var isboss = ${emp.isboss};
+	 	 	$("input[name='isboss'][value='"+isboss+"']").attr("checked",true);
  	 	});
  	 </script>
   </head>
   
   <body>
-  <h2 style="text-align: center;">添加员工</h2>
-    <form id="ff" method="post" action="<%=request.getContextPath() %>/emp/addEmp.do" style="text-align: center;">   
+  	<h2 style="text-align: center;">修改员工</h2>
+    <form id="ff" method="post" action="<%=request.getContextPath() %>/emp/updateEmp.do" style="text-align: center;">   
     <div>   
         <label for="ename">员工名称:</label>   
-        <input class="easyui-validatebox" type="text" name="ename" data-options="required:true" />
+        <input class="easyui-validatebox" type="text" name="ename" value="${emp.ename}" data-options="required:true" />
+        <input id="eid" name="eid" type="hidden" value="${emp.eid}">
     </div>   
     <div>   
         <label for="tel">员工电话:</label>   
-        <input class="easyui-validatebox" type="text" name="tel" />   
+        <input class="easyui-validatebox" type="text" name="tel" value="${emp.tel}"/>   
     </div>   
     <div>   
         <label for="address">员工住址:</label>   
-        <input class="easyui-validatebox" type="text" name="address"/>   
+        <input class="easyui-validatebox" type="text" name="address" value="${emp.address}"/>   
     </div>  
     <div>   
         <label for="email">员工邮箱:</label>   
-        <input class="easyui-validatebox" type="text" name="email" />   
+        <input class="easyui-validatebox" type="text" name="email" value="${emp.email}"/>   
     </div>  
     <div>   
         <label for="time">入职时间:</label>   
-		<input type="text" name="time" id="jointime" onclick="WdatePicker()" class="Wdate" ></input>
+		<input type="text" name="time" id="jointime" onclick="WdatePicker()" class="Wdate" value="${jointime}"></input>
     </div>  
     <div>   
         <label for="username">员工账号:</label>   
-        <input class="easyui-validatebox" type="text" name="username" data-options="required:true" />   
+        <input class="easyui-validatebox" type="text" name="username" data-options="required:true" value="${emp.username}"/>   
     </div>  
     <div>   
         <label for="password">员工密码:</label>   
-        <input class="easyui-validatebox" type="text" name="password" data-options="required:true" />   
+        <input class="easyui-validatebox" type="text" name="password" data-options="required:true" value="${emp.password}"/>   
     </div>
     <div>   
         <label for="isboss">是否管理人员:</label>   
@@ -68,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input class="easyui-validatebox" type="radio" name="isboss" value="0"/>否
     </div>  
     <div>   
-        <input class="easyui-validatebox" type="submit" value="确定添加"/>
+        <input class="easyui-validatebox" type="submit" value="确定提交"/>
     </div>  
 </form>  
   </body>
