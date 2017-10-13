@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zyj.service.LoginService;
@@ -39,7 +38,7 @@ public class LoginController {
 	
 	
 	@RequestMapping("/layout.do")
-	public String layout(ModelMap modelMap,HttpServletResponse response){
+	public String layout(ModelMap modelMap){
 		List<Menu> showMenu = menuServiceImpl.getShowMenu();
 		JSONArray fromObject = JSONArray.fromObject(showMenu);
 		String json = fromObject.toString();

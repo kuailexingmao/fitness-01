@@ -2,10 +2,8 @@ package org.zyj.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,7 +25,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/addEmp.do")
-	public String addEmp(ModelMap modelMap, Emp emp,String time) throws ParseException{
+	public String addEmp(Emp emp, String time) throws ParseException{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟  
 		java.util.Date date=sdf.parse(time);
 		emp.setJointime(date);
@@ -58,7 +56,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/updateEmp.do")
-	public String updateEmp(ModelMap modelMap, Emp emp,String time) throws ParseException{
+	public String updateEmp(Emp emp, String time) throws ParseException{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟  
 		java.util.Date date=sdf.parse(time);
 		emp.setJointime(date);

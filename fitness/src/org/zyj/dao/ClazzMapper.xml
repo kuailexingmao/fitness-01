@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.zyj.dao.ClazzMapper" >
+  <resultMap id="BaseResultMap" type="org.zyj.vo.Clazz" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="cprice" property="cprice" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cid, cname, ctime, cprice
+  </sql>
+  <select id="getListClazz" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_class t
+    order by t.cno desc
+    limit #{start},#{size}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_class
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.zyj.vo.Clazz" >
+    insert into t_class (cid, cname, ctime, 
+      cprice)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{ctime,jdbcType=INTEGER}, 
+      #{cprice,jdbcType=DOUBLE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.zyj.vo.Clazz" >
+    update t_class
+    set cname = #{cname,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=INTEGER},
+      cprice = #{cprice,jdbcType=DOUBLE}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>
