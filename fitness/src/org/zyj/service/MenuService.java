@@ -6,5 +6,5 @@ import org.zyj.vo.Menu;
 
 public interface MenuService {
 
-	List<Menu> getShowMenu();
+	List<Menu> getShowMenu(String isboss);
 }

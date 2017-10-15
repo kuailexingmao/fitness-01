@@ -25,7 +25,10 @@
 		select
 		<include refid="Base_Column_List" />
 		from t_menu
-		where isshow='1'
+		where 1=1 
+		<if test="isshow != 1 ">
+			and isshow = #{isshow}
+		</if>
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from t_menu

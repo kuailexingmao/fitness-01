@@ -17,6 +17,9 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+<style type="text/css">
+	#win{width: auto;height:44em;text-align: center;background-image: url(./css/login_bg.jpg);background-size: 100% 100%;}
+</style>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/ztree3/zTreeStyle/zTreeStyle.css"
 	type="text/css"></link>
@@ -83,7 +86,7 @@
 </script>
 </head>
 
-<body class="easyui-layout">
+<body class="easyui-layout" style="background-image: url('./css/login_bg.jpg');background-size:100% 100%;">
 	<div id="win" style="text-align: center;">
 		<form id="login_form" method="post">
 			<table style="text-align: center;margin:60px 0 0 120px;">

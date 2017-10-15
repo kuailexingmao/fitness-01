@@ -24,10 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/My97DatePicker/skin/WdatePicker.css">
  	 <script type="text/javascript" charset="utf-8" src="<%=request.getContextPath()%>/My97DatePicker/WdatePicker.js"></script>
  	 
- 	 <script type="text/javascript">
- 	 	$(function(){
- 	 	});
- 	 </script>
   </head>
   
   <body>

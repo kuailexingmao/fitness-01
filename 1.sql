@@ -33,13 +33,16 @@ DROP TABLE IF EXISTS `t_class`;
 
 CREATE TABLE `t_class` (
   `cid` int(30) NOT NULL AUTO_INCREMENT COMMENT '序列号',
+  `cno` varchar(30) NOT NULL COMMENT '课程编号',
   `cname` varchar(30) DEFAULT NULL COMMENT '课程名称',
   `ctime` int(20) DEFAULT NULL COMMENT '课程时长',
   `cprice` double(16,2) DEFAULT NULL COMMENT '单节课程价格',
-  PRIMARY KEY (`cid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`cid`,`cno`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_class` */
+
+insert  into `t_class`(`cid`,`cno`,`cname`,`ctime`,`cprice`) values (1,'1001','健身操',6,600.00),(3,'3001','有氧运动',6,600.00),(4,'4001','增肌方法',3,300.00),(5,'5001','扩胸运动',5,500.00),(6,'6001','腿部塑性',6,600.00),(7,'2001','瑜伽',24,998.00);
 
 /*Table structure for table `t_emp` */
 
@@ -76,11 +79,11 @@ CREATE TABLE `t_menu` (
   `icon` varchar(255) DEFAULT NULL COMMENT '菜单图片',
   `isshow` char(2) NOT NULL DEFAULT '1' COMMENT '是否显示0不显示1显示',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_menu` */
 
-insert  into `t_menu`(`mid`,`mname`,`pid`,`path`,`target`,`icon`,`isshow`) values (1,'员工管理','0','./emp/toListEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(2,'添加员工','1','./emp/toAddEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(5,'客户管理','0',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(6,'添加客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','1');
+insert  into `t_menu`(`mid`,`mname`,`pid`,`path`,`target`,`icon`,`isshow`) values (1,'员工管理','0','./emp/toListEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(2,'添加员工','1','./emp/toAddEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(5,'客户管理','0',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(6,'添加客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(7,'课程管理','0','./clazz/toListClazz.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(8,'添加课程','7','./clazz/toAddClazz.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0');
 
 /*Table structure for table `t_paycost` */
 

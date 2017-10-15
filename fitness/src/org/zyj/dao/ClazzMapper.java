@@ -15,4 +15,6 @@ public interface ClazzMapper {
     int updateByPrimaryKey(Clazz record);
 
     List<Clazz> getListClazz(Map<String, Object> map);
+
+	Integer getCount();
 }

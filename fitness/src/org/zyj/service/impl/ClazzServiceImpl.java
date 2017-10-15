@@ -26,26 +26,31 @@ public class ClazzServiceImpl implements ClazzService {
         map.put("start",(page-1)*rows);
         map.put("size",rows);
         List<Clazz> listClazz = clazzMapperDao.getListClazz(map);
-        return null;
+        Integer count =  clazzMapperDao.getCount();
+        DataGrid<Clazz> dataClazz = new DataGrid<Clazz>();
+        dataClazz.setRows(listClazz);
+        dataClazz.setTotal(count);
+        return dataClazz;
     }
 
     @Override
-    public void deleteClazz(Integer eid) {
-
+    public void deleteClazz(Integer cid) {
+    	clazzMapperDao.deleteByPrimaryKey(cid);
     }
 
     @Override
     public Clazz findClazzByCid(Integer cid) {
-        return null;
+    	Clazz clazzByCid = clazzMapperDao.selectByPrimaryKey(cid);
+        return clazzByCid;
     }
 
     @Override
     public void updateClazz(Clazz clazz) {
-
+    	clazzMapperDao.updateByPrimaryKey(clazz);
     }
 
     @Override
     public void addClazz(Clazz clazz) {
-
+    	clazzMapperDao.insert(clazz);
     }
 }
