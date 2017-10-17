@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.08 (64 bit)
-MySQL - 5.5.13 : Database - fitness
+MySQL - 5.7.18-log : Database - fitness
 *********************************************************************
 */
 
@@ -21,8 +21,8 @@ USE `fitness`;
 DROP TABLE IF EXISTS `t_c_u`;
 
 CREATE TABLE `t_c_u` (
-  `uid` int(30) DEFAULT NULL COMMENT '用户id',
-  `cid` int(30) DEFAULT NULL COMMENT '课程id'
+  `certifyno` int(30) DEFAULT NULL COMMENT '用户身份证号',
+  `cno` int(30) DEFAULT NULL COMMENT '课程编号'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_c_u` */
@@ -79,11 +79,11 @@ CREATE TABLE `t_menu` (
   `icon` varchar(255) DEFAULT NULL COMMENT '菜单图片',
   `isshow` char(2) NOT NULL DEFAULT '1' COMMENT '是否显示0不显示1显示',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_menu` */
 
-insert  into `t_menu`(`mid`,`mname`,`pid`,`path`,`target`,`icon`,`isshow`) values (1,'员工管理','0','./emp/toListEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(2,'添加员工','1','./emp/toAddEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(5,'客户管理','0',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(6,'添加客户','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(7,'课程管理','0','./clazz/toListClazz.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(8,'添加课程','7','./clazz/toAddClazz.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0');
+insert  into `t_menu`(`mid`,`mname`,`pid`,`path`,`target`,`icon`,`isshow`) values (1,'员工管理','0','./emp/toListEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(2,'添加员工','1','./emp/toAddEmp.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','1'),(5,'客户管理','0','./user/toListUser.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(6,'添加客户','5','./user/toAddUser.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(7,'课程管理','0','./clazz/toListClazz.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(8,'添加课程','7','./clazz/toAddClazz.do',NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(9,'会员查看','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','0'),(10,'缴费记录','5',NULL,NULL,'./ztree3/zTreeStyle/img/diy/2.png','0');
 
 /*Table structure for table `t_paycost` */
 
@@ -119,10 +119,13 @@ CREATE TABLE `t_user` (
   `isvip` char(2) NOT NULL DEFAULT '0' COMMENT '是否为VIP0不是1是',
   `lastupdatetime` datetime DEFAULT NULL COMMENT '最后修改时间',
   `vipcardid` varchar(30) DEFAULT NULL COMMENT 'vip卡号',
+  `viptime` date DEFAULT NULL COMMENT 'vip时间',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_user` */
+
+insert  into `t_user`(`uid`,`uname`,`sex`,`certifyno`,`tel`,`address`,`email`,`opentime`,`isvip`,`lastupdatetime`,`vipcardid`,`viptime`) values (1,'王者','1','410522198009123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','',NULL),(2,'荣耀','0',NULL,NULL,NULL,NULL,NULL,'0',NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
