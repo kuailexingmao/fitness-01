@@ -3,7 +3,7 @@ package org.zyj.service.impl;
 import org.springframework.stereotype.Service;
 import org.zyj.dao.ClazzMapper;
 import org.zyj.service.ClazzService;
-import org.zyj.utisl.DataGrid;
+import org.zyj.utils.DataGrid;
 import org.zyj.vo.Clazz;
 
 import javax.annotation.Resource;

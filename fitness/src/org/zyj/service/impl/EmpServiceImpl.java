@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.zyj.dao.EmpMapper;
 import org.zyj.service.EmpService;
-import org.zyj.utisl.DataGrid;
+import org.zyj.utils.DataGrid;
 import org.zyj.vo.Emp;
 
 @Service
@@ -20,7 +20,7 @@ public class EmpServiceImpl implements EmpService {
 
 	public DataGrid<Emp> getListEmp(Integer page, Integer rows) {
 		
-		Map<String,Object> map = new HashMap<String, Object>();
+		Map<String,Object> map = new HashMap<>();
 		map.put("start",(page-1)*rows);
 		map.put("size",rows);
 		List<Emp> listEmp = empMapperDao.getListEmp(map);

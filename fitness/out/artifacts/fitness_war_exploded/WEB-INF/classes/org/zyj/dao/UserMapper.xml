@@ -13,11 +13,26 @@
     <result column="isvip" property="isvip" jdbcType="CHAR" />
     <result column="lastupdatetime" property="lastupdatetime" jdbcType="TIMESTAMP" />
     <result column="vipcardid" property="vipcardid" jdbcType="VARCHAR" />
+    <result column="viptime" property="viptime" jdbcType="DATE" />
   </resultMap>
   <sql id="Base_Column_List" >
     uid, uname, sex, certifyno, tel, address, email, opentime, isvip, lastupdatetime, 
-    vipcardid
+    vipcardid, viptime
   </sql>
+
+  <select id="getListClazz" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user t
+    ORDER
+  </select>
+
+  <select id="getCount" resultMap="BaseResultMap" >
+    select
+    count(1)
+    from t_user t
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -38,115 +53,6 @@
       #{email,jdbcType=VARCHAR}, #{opentime,jdbcType=DATE}, #{isvip,jdbcType=CHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
       #{vipcardid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.zyj.vo.User" >
-    insert into t_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
-        uid,
-      </if>
-      <if test="uname != null" >
-        uname,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="certifyno != null" >
-        certifyno,
-      </if>
-      <if test="tel != null" >
-        tel,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="opentime != null" >
-        opentime,
-      </if>
-      <if test="isvip != null" >
-        isvip,
-      </if>
-      <if test="lastupdatetime != null" >
-        lastupdatetime,
-      </if>
-      <if test="vipcardid != null" >
-        vipcardid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="uname != null" >
-        #{uname,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=CHAR},
-      </if>
-      <if test="certifyno != null" >
-        #{certifyno,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null" >
-        #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="opentime != null" >
-        #{opentime,jdbcType=DATE},
-      </if>
-      <if test="isvip != null" >
-        #{isvip,jdbcType=CHAR},
-      </if>
-      <if test="lastupdatetime != null" >
-        #{lastupdatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="vipcardid != null" >
-        #{vipcardid,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.zyj.vo.User" >
-    update t_user
-    <set >
-      <if test="uname != null" >
-        uname = #{uname,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=CHAR},
-      </if>
-      <if test="certifyno != null" >
-        certifyno = #{certifyno,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null" >
-        tel = #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="opentime != null" >
-        opentime = #{opentime,jdbcType=DATE},
-      </if>
-      <if test="isvip != null" >
-        isvip = #{isvip,jdbcType=CHAR},
-      </if>
-      <if test="lastupdatetime != null" >
-        lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="vipcardid != null" >
-        vipcardid = #{vipcardid,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where uid = #{uid,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="org.zyj.vo.User" >
     update t_user
     set uname = #{uname,jdbcType=VARCHAR},

@@ -71,11 +71,19 @@
 		}
 
 	});
+	
+	function exit(){
+    	location.href="<%=request.getContextPath()%>/login/exit.do";
+    }
 </script>
 </head>
 
 <body class="easyui-layout">
-	<div data-options="region:'north',split:true" style="height:100px;">北${test}</div>
+	<div data-options="region:'north',split:true" style="height:100px;background:#F3F3F3;" >
+		<a href="www.solooo.net"><span class="northTitle">北京猎鹰后台管理系统</span></a>
+    <span class="loginInfo">登录用户：${empinfo.ename}&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:void(0)" onclick="exit()">退出</a></span>
+	</div>
 	<div data-options="region:'west',split:true" style="width:234px;">
 		<ul id="tree" class="ztree" style="width:230px; overflow:auto;"></ul>
 	</div>

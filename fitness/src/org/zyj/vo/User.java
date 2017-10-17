@@ -25,6 +25,8 @@ public class User {
 
     private String vipcardid;
 
+    private Date viptime;
+
     public Integer getUid() {
         return uid;
     }
@@ -111,5 +113,13 @@ public class User {
 
     public void setVipcardid(String vipcardid) {
         this.vipcardid = vipcardid == null ? null : vipcardid.trim();
+    }
+
+    public Date getViptime() {
+        return viptime;
+    }
+
+    public void setViptime(Date viptime) {
+        this.viptime = viptime;
     }
 }
