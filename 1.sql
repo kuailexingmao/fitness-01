@@ -120,12 +120,13 @@ CREATE TABLE `t_user` (
   `lastupdatetime` datetime DEFAULT NULL COMMENT '最后修改时间',
   `vipcardid` varchar(30) DEFAULT NULL COMMENT 'vip卡号',
   `viptime` date DEFAULT NULL COMMENT 'vip时间',
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `pk_certifyno` (`certifyno`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_user` */
 
-insert  into `t_user`(`uid`,`uname`,`sex`,`certifyno`,`tel`,`address`,`email`,`opentime`,`isvip`,`lastupdatetime`,`vipcardid`,`viptime`) values (1,'王者','1','410522198009123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','',NULL),(2,'荣耀','0',NULL,NULL,NULL,NULL,NULL,'0',NULL,NULL,NULL);
+insert  into `t_user`(`uid`,`uname`,`sex`,`certifyno`,`tel`,`address`,`email`,`opentime`,`isvip`,`lastupdatetime`,`vipcardid`,`viptime`) values (1,'王者','1','410522198009123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','452343443','2017-10-10'),(2,'荣耀','0','410522198009345142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(3,'荣耀1','0','410522198009345242','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(4,'王者1','1','410522198009145142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','452343443','2017-10-10'),(6,'荣耀3','0','410522198009575142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(7,'王者2','1','410522198689123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','452343443','2017-10-10');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

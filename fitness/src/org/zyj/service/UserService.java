@@ -10,4 +10,5 @@ public interface UserService {
 
     DataGrid<User> getListUser(Integer page, Integer rows);
 
+    void deleteUser(Integer uid);
 }

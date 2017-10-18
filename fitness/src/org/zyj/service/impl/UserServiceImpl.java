@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
         dataUser.setTotal(count);
         return dataUser;
     }
+
+    @Override
+    public void deleteUser(Integer uid) {
+        userMapperDao.deleteByPrimaryKey(uid);
+    }
 }

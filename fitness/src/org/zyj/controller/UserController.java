@@ -30,4 +30,10 @@ public class UserController {
         DataGrid<User> listUser = userServiceImpl.getListUser(page,rows);
         return listUser;
     }
+
+    @RequestMapping("/deleteUser.do")
+    public String deleteUser(Integer uid){
+        userServiceImpl.deleteUser(uid);
+        return "user/successdel";
+    }
 }
