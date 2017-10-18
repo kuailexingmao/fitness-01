@@ -22,10 +22,25 @@
                 pageSize:5,
                 pageList:[5,10,15],
                 columns:[[
-                    {field:"uname",title:"课程编号",width:100},
-                    {field:"sex",title:"课程名称",width:100},
-                    {field:"certifyno",title:"课程时长（小时）",width:100},
-                    {field:"tel",title:"课程价格（元）",width:100},
+                    {field:"uname",title:"客户名称",width:100},
+                    {field:"sex",title:"课程名称",width:100,
+                        formatter: function(value,row,index){
+                            if(row.sex == "1"){
+                                return "男";
+                            }else if(row.sex == "0"){
+                                return "女";
+                            }
+                        }
+                    },
+                    {field:"certifyno",title:"身份证号",width:100},
+                    {field:"tel",title:"联系方式",width:100},
+                    {field:"address",title:"居住地址",width:100},
+                    {field:"email",title:"联系邮箱",width:100},
+                    {field:"opentime",title:"开户时间",width:100,
+                        formatter: function (value, row, index) {
+                            return dateFmt(row.opentime);
+                        }
+                    },
                     {field:'caozuo',title:'操作', width:80,
                         formatter: function(value,row,index){
                             return "<a href='javascript:void(0)' onclick='del("+row.cid+")'>删除</a>"+
@@ -47,6 +62,15 @@
 
         function update(id){
             location.href="<%=request.getContextPath() %>/clazz/toUpdateClazz.do?cid="+id;
+        }
+
+        function dateFmt(shijian){
+            var time = new Date(shijian);
+            var year = time.getFullYear();  //年
+            var month = time.getMonth() + 1;  //月
+            var day = time.getDate();         //日
+            var dateTimeStr= year + "-" +month + "-" + day ;
+            return dateTimeStr;
         }
 
     </script>
