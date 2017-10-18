@@ -24,10 +24,11 @@
     select
     <include refid="Base_Column_List" />
     from t_user t
-    ORDER
+    ORDER BY t.opentime DESC
+    limit #{start},#{size}
   </select>
 
-  <select id="getCount" resultMap="BaseResultMap" >
+  <select id="getCount" resultType="int">
     select
     count(1)
     from t_user t
