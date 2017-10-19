@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>删除页面</title>
+    <title>My JSP 'successdel.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,11 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<jsp:include page="/main/jslink.jsp"></jsp:include>
 	<script type="text/javascript">
-		 var alltime = 5;
+		 var alltime = 6;
 		 function setTime() {
 			  if (alltime <= 0) {
 				   clearInterval(s);
-				   location.href = "<%=request.getContextPath()%>/emp/toListEmp.do";
+				   location.href = "<%=request.getContextPath()%>/user/toListUser.do";
 			  } else {
 				   alltime--;
 				   $("#time").html(alltime);

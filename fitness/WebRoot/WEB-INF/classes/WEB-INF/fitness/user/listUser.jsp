@@ -43,8 +43,8 @@
                     },
                     {field:'caozuo',title:'操作', width:80,
                         formatter: function(value,row,index){
-                            return "<a href='javascript:void(0)' onclick='del("+row.cid+")'>删除</a>"+
-                                "&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick='update("+row.cid+")'>修改</a>";
+                            return "<a href='javascript:void(0)' onclick='del("+row.uid+")'>删除</a>"+
+                                "&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick='update("+row.uid+")'>修改</a>";
                         }
                     }
                 ]]
@@ -55,13 +55,13 @@
             console.info(id);
             $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
                 if (r){
-                    location.href="<%=request.getContextPath() %>/clazz/deleteClazz.do?cid="+id;
+                    location.href="<%=request.getContextPath() %>/user/deleteUser.do?uid="+id;
                 }
             });
         }
 
         function update(id){
-            location.href="<%=request.getContextPath() %>/clazz/toUpdateClazz.do?cid="+id;
+            location.href="<%=request.getContextPath() %>/user/toUpdateUser.do?uid="+id;
         }
 
         function dateFmt(shijian){
