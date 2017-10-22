@@ -17,4 +17,6 @@ public interface ClazzMapper {
     List<Clazz> getListClazz(Map<String, Object> map);
 
 	Integer getCount();
+
+	List<Clazz> getClazzByCertifyNo(String certifyno);
 }

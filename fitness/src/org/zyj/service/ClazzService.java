@@ -1,5 +1,6 @@
 package org.zyj.service;
 
+
 import org.zyj.utils.DataGrid;
 import org.zyj.vo.Clazz;
 
@@ -17,4 +18,6 @@ public interface ClazzService {
     void updateClazz(Clazz clazz);
 
     void addClazz(Clazz clazz);
+
+	String getClazzByCertifyNo(String certifyno);
 }

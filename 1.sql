@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.08 (64 bit)
-MySQL - 5.7.18-log : Database - fitness
+MySQL - 5.5.13 : Database - fitness
 *********************************************************************
 */
 
@@ -23,7 +23,8 @@ DROP TABLE IF EXISTS `t_c_u`;
 CREATE TABLE `t_c_u` (
   `certifyno` varchar(30) DEFAULT NULL COMMENT '用户身份证号',
   `cno` varchar(30) DEFAULT NULL COMMENT '课程编号',
-  UNIQUE KEY `sys_id` (`certifyno`,`cno`)
+  UNIQUE KEY `sys_id` (`certifyno`,`cno`),
+  CONSTRAINT `t_c_u_ibfk_1` FOREIGN KEY (`certifyno`) REFERENCES `t_user` (`certifyno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_c_u` */
@@ -41,11 +42,11 @@ CREATE TABLE `t_class` (
   `ctime` int(20) DEFAULT NULL COMMENT '课程时长',
   `cprice` double(16,2) DEFAULT NULL COMMENT '单节课程价格',
   PRIMARY KEY (`cid`,`cno`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_class` */
 
-insert  into `t_class`(`cid`,`cno`,`cname`,`ctime`,`cprice`) values (1,'1001','健身操',6,600.00),(3,'3001','有氧运动',6,600.00),(4,'4001','增肌方法',3,300.00),(5,'5001','扩胸运动',5,500.00),(6,'6001','腿部塑性',6,600.00),(7,'2001','瑜伽',24,998.00);
+insert  into `t_class`(`cid`,`cno`,`cname`,`ctime`,`cprice`) values (1,'1001','健身操',6,600.00),(3,'3001','有氧运动',6,600.00),(4,'4001','增肌方法',3,300.00),(5,'5001','扩胸运动',5,500.00),(6,'6001','腿部塑性',6,600.00),(7,'2001','瑜伽',24,998.00),(8,'cp2001','哈哈哈',6,600.00);
 
 /*Table structure for table `t_emp` */
 
@@ -119,17 +120,17 @@ CREATE TABLE `t_user` (
   `address` varchar(30) DEFAULT NULL COMMENT '用户地址',
   `email` varchar(30) DEFAULT NULL COMMENT '邮箱',
   `opentime` date DEFAULT NULL COMMENT '开户时间',
-  `isvip` char(2) NOT NULL DEFAULT '0' COMMENT '是否为VIP0不是1是',
+  `isvip` char(2) DEFAULT '0' COMMENT '是否为VIP0不是1是',
   `lastupdatetime` datetime DEFAULT NULL COMMENT '最后修改时间',
   `vipcardid` varchar(30) DEFAULT NULL COMMENT 'vip卡号',
   `viptime` date DEFAULT NULL COMMENT 'vip时间',
   PRIMARY KEY (`uid`),
   UNIQUE KEY `pk_certifyno` (`certifyno`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_user` */
 
-insert  into `t_user`(`uid`,`uname`,`sex`,`certifyno`,`tel`,`address`,`email`,`opentime`,`isvip`,`lastupdatetime`,`vipcardid`,`viptime`) values (1,'王者','1','410522198009123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','452343443','2017-10-10'),(2,'荣耀','0','410522198009345142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(3,'荣耀1','0','410522198009345242','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(4,'王者1','1','410522198009145142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-10','1','2017-10-10 11:00:10','452343443','2017-10-10'),(6,'荣耀3','0','410522198009575142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(9,'荣耀2','0','410522198689123142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL);
+insert  into `t_user`(`uid`,`uname`,`sex`,`certifyno`,`tel`,`address`,`email`,`opentime`,`isvip`,`lastupdatetime`,`vipcardid`,`viptime`) values (1,'王者','1','410522198009123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-11','1','2017-10-10 11:00:10','452343443','2017-10-10'),(2,'荣耀','0','410522198009345142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(10,'荣耀4','0','410522198129345142','13452342204','河南省郑州市金水区金水路143号','123@qq.com','2017-10-18','0','2017-10-18 09:56:48',NULL,NULL),(11,'王者1','1','410522194539123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-12','1','2017-10-10 11:00:10','452343443','2017-10-10'),(12,'王者2','0','410522196379123142','13459082204','河南省郑州市金水区金水路131号','123@qq.com','2017-10-18',NULL,NULL,NULL,'2017-10-10'),(16,'测试1','0','4105221997528','13520346603','郑州市金水区','123@qq.com','2017-10-17',NULL,'2017-10-22 20:24:46',NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

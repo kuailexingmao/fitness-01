@@ -1,23 +1,23 @@
 package org.zyj.vo;
 
 public class Tcu {
-    private Integer uid;
+    private Integer certifyno;
 
-    private Integer cid;
+    private Integer cno;
 
-    public Integer getUid() {
-        return uid;
-    }
+    public Integer getCertifyno() {
+		return certifyno;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public void setCertifyno(Integer certifyno) {
+		this.certifyno = certifyno;
+	}
 
-    public Integer getCid() {
-        return cid;
-    }
+	public Integer getCno() {
+		return cno;
+	}
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
+	public void setCno(Integer cno) {
+		this.cno = cno;
+	}
 }

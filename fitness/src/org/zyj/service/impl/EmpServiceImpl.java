@@ -20,7 +20,7 @@ public class EmpServiceImpl implements EmpService {
 
 	public DataGrid<Emp> getListEmp(Integer page, Integer rows) {
 		
-		Map<String,Object> map = new HashMap<>();
+		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("start",(page-1)*rows);
 		map.put("size",rows);
 		List<Emp> listEmp = empMapperDao.getListEmp(map);

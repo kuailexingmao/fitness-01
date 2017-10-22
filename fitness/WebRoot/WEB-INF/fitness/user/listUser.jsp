@@ -12,12 +12,54 @@
     <jsp:include page="/main/jslink.jsp"></jsp:include>
     <script type="text/javascript">
         $(function(){
+        	 var hideIndexs = new Array();
+        	$("#ss").searchbox({ 
+				searcher:function(value){ 
+					hideIndexs.length = 0;
+		            if (value == '请输入查询内容') {
+		                value = '';
+		            }
+		            
+		            //结束datagrid的编辑.
+            		endEdit();
+				    var rows = $("#dg").datagrid("getRows");
+
+		            var cols = $("#dg").datagrid("options").columns[0];
+		
+		            for (var i = rows.length - 1; i >= 0; i--) {
+		                var row = rows[i];
+		                var isMatch = false;
+		                for (var j = 0; j < cols.length; j++) {
+		
+		                    var pValue = row[cols[j].field];
+		                    if (pValue == undefined) {
+		                        continue;
+		                    }
+		                    if (pValue.toString().indexOf(value) >= 0) {
+		                        isMatch = true;
+		                        break;
+		                    }
+		                }
+		                if (!isMatch)
+		                    hideIndexs.push(i);
+		                $("#dg").datagrid("refreshRow", i);
+		            }
+		
+		
+		        },
+		        prompt: "请输入查询内容"
+			}); 
+        	
+        
             $("#dg").datagrid({
                 url:"<%=request.getContextPath() %>/user/listUser.do",
                 fitColumns:true,
                 rownumbers:true,
                 singleSelect:true,
                 pagination:true,
+                rowStyler: function (index, row) {
+	                if (hideIndexs.indexOf(index)>=0) { return "background:red; display:none"; }
+	            },
                 pageNumber:1,
                 pageSize:5,
                 pageList:[5,10,15],
@@ -46,6 +88,12 @@
                             return "<a href='javascript:void(0)' onclick='del("+row.uid+")'>删除</a>"+
                                 "&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick='update("+row.uid+")'>修改</a>";
                         }
+                    },
+                    {field:'clazzcaozuo',title:'课程操作', width:80,
+                        formatter: function(value,row,index){
+                            return "<a href='javascript:void(0)' onclick='getClazz("+row.uid+")'>已选课程</a>"+
+                                "&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick='saveClazz("+row.uid+")'>选择课程</a>";
+                        }
                     }
                 ]]
             });
@@ -72,10 +120,33 @@
             var dateTimeStr= year + "-" +month + "-" + day ;
             return dateTimeStr;
         }
+        
+        function endEdit() {
+	        var rows = $("#dg").datagrid("getRows");
+	        for (var i = 0; i < rows.length; i++) {
+	            $("#dg").datagrid("endEdit", i);
+	        }
+	    }
+	    
+	    function getClazz(id){
+	    	$("#dd").dialog({    
+			    title: "所选课程",    
+			    width: 400,    
+			    height: 200,    
+			    closed: false,    
+			    cache: true,    
+			    href: "<%=request.getContextPath()%>/user/getClazz.do?uid="+id,    
+			    modal: true
+			});  
+	    }
 
     </script>
 </head>
 <body>
+
+名称查询<input id="ss"></input> 
 <table id="dg"></table>
+
+<div id="dd"></div>  
 </body>
 </html>
