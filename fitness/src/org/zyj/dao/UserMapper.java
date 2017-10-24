@@ -17,4 +17,6 @@ public interface UserMapper {
     List<User> getListClazz(Map<String, Object> map);
 
     Integer getCount();
+
+	void deleteByCertifyno(String certifyno);
 }

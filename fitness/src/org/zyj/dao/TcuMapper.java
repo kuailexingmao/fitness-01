@@ -6,4 +6,6 @@ public interface TcuMapper {
     int insert(Tcu record);
 
     int insertSelective(Tcu record);
+
+	int deleteByCertifyno(String certifyno);
 }

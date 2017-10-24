@@ -31,6 +31,14 @@
     where t.cid = #{cid,jdbcType=INTEGER}
   </select>
   
+  <select id="getClazzByCertifyNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT t.cname 
+      FROM t_class t 
+      LEFT JOIN t_c_u cu ON t.cno = cu.cno 
+      LEFT JOIN t_user u ON u.certifyno=cu.certifyno
+	 WHERE u.certifyno = #{certifyno,jdbcType=VARCHAR};
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_class
     where cid = #{cid,jdbcType=INTEGER}

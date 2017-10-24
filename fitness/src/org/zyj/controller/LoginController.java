@@ -45,7 +45,6 @@ public class LoginController {
 		List<Menu> showMenu = menuServiceImpl.getShowMenu(emp.getIsboss());
 		JSONArray fromObject = JSONArray.fromObject(showMenu);
 		String json = fromObject.toString();
-		System.out.println(json);
 		modelMap.addAttribute("ztree",json);
 		return "layout";
 	}

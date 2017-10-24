@@ -10,5 +10,11 @@ public interface UserService {
 
     DataGrid<User> getListUser(Integer page, Integer rows);
 
-    void deleteUser(Integer uid);
+    void deleteUser(String certifyno);
+
+	User findUserByUid(Integer uid);
+
+	void updateUser(User user);
+
+	void addUser(User user);
 }

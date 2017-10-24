@@ -6,6 +6,7 @@ import org.zyj.service.ClazzService;
 import org.zyj.utils.DataGrid;
 import org.zyj.vo.Clazz;
 
+
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
@@ -53,4 +54,19 @@ public class ClazzServiceImpl implements ClazzService {
     public void addClazz(Clazz clazz) {
     	clazzMapperDao.insert(clazz);
     }
+
+	@Override
+	public String getClazzByCertifyNo(String certifyno) {
+		String result = "";
+		List<Clazz> listClazz = clazzMapperDao.getClazzByCertifyNo(certifyno);
+		if (listClazz.size() > 0) {
+			for (Clazz clazz : listClazz) {
+				result += "," + clazz.getCname();
+			}
+			result = result.substring(1);
+			return "该用户所选课程有:<span style='color: blue;'>"+result+"</span>";
+		} else {
+			return "该用户没有任何课程";
+		}
+	}
 }

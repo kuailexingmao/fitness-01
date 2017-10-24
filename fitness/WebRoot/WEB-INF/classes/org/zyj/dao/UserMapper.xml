@@ -44,6 +44,12 @@
     delete from t_user
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
+  
+  <delete id="deleteByCertifyno" parameterType="java.lang.String" >
+    delete from t_user
+    where certifyno = #{certifyno,jdbcType=VARCHAR}
+  </delete>
+  
   <insert id="insert" parameterType="org.zyj.vo.User" >
     insert into t_user (uid, uname, sex, 
       certifyno, tel, address, 
@@ -51,7 +57,7 @@
       vipcardid)
     values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, 
       #{certifyno,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{opentime,jdbcType=DATE}, #{isvip,jdbcType=CHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
+      #{email,jdbcType=VARCHAR}, #{opentime,jdbcType=DATE}, #{isvip,jdbcType=CHAR}, sysdate(), 
       #{vipcardid,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="org.zyj.vo.User" >
@@ -64,7 +70,7 @@
       email = #{email,jdbcType=VARCHAR},
       opentime = #{opentime,jdbcType=DATE},
       isvip = #{isvip,jdbcType=CHAR},
-      lastupdatetime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      lastupdatetime = SYSDATE(),
       vipcardid = #{vipcardid,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>

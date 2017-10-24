@@ -26,7 +26,7 @@ public class EmpController {
 	
 	@RequestMapping("/addEmp.do")
 	public String addEmp(Emp emp, String time) throws ParseException{
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟  
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date=sdf.parse(time);
 		emp.setJointime(date);
 		empServiceImpl.addEmp(emp);
@@ -57,12 +57,11 @@ public class EmpController {
 	
 	@RequestMapping("/updateEmp.do")
 	public String updateEmp(Emp emp, String time) throws ParseException{
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟  
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date=sdf.parse(time);
 		emp.setJointime(date);
 		empServiceImpl.updateEmp(emp);
 		return "redirect:/emp/toListEmp.do";
-		
 	}
 	
 	@RequestMapping("/deleteEmp.do")
