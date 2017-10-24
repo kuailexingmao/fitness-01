@@ -7,6 +7,7 @@ import org.zyj.utils.DataGrid;
 import org.zyj.vo.User;
 
 import javax.annotation.Resource;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,12 +23,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public DataGrid<User> getListUser(Integer page, Integer rows) {
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<String, Object>();
         map.put("start",(page-1)*rows);
         map.put("size",rows);
         List<User> listUser = userMapperDao.getListClazz(map);
         Integer count =  userMapperDao.getCount();
-        DataGrid<User> dataUser = new DataGrid<>();
+        DataGrid<User> dataUser = new DataGrid<User>();
         dataUser.setRows(listUser);
         dataUser.setTotal(count);
         return dataUser;
