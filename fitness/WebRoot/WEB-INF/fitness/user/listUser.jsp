@@ -16,8 +16,8 @@
         	$("#ss").searchbox({ 
 				searcher:function(value){ 
 					hideIndexs.length = 0;
-		            if (value == '请输入查询内容') {
-		                value = '';
+		            if (value == "请输入名称查询") {
+		                value = "";
 		            }
 		            
 		            //结束datagrid的编辑.
@@ -47,10 +47,9 @@
 		
 		
 		        },
-		        prompt: "请输入查询内容"
+		        prompt: "请输入名称查询"
 			}); 
         	
-        
             $("#dg").datagrid({
                 url:"<%=request.getContextPath() %>/user/listUser.do",
                 fitColumns:true,
@@ -58,7 +57,9 @@
                 singleSelect:true,
                 pagination:true,
                 rowStyler: function (index, row) {
-	                if (hideIndexs.indexOf(index)>=0) { return "background:red; display:none"; }
+	                if (hideIndexs.indexOf(index)>=0) { 
+	                	return "background:red; display:none"; 
+	                }
 	            },
                 pageNumber:1,
                 pageSize:5,
@@ -97,11 +98,21 @@
                     }
                 ]]
             });
+            
+            $("#dd").dialog({    
+			    title: "所选课程",    
+			    width: 400,    
+			    height: 200,    
+			    closed: true,    
+			    cache: true,    
+			    href: "",    
+			    modal: true
+			}); 
         });
 
         function del(id){
             console.info(id);
-            $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+            $.messager.confirm("确认","您确认想要删除记录吗？",function(r){
                 if (r){
                     location.href="<%=request.getContextPath() %>/user/deleteUser.do?uid="+id;
                 }
@@ -139,14 +150,31 @@
 			    modal: true
 			});  
 	    }
+	    
+	    function saveClazz(id){
+	    	$("#dd").dialog("open"); 
+	    }
 
     </script>
 </head>
 <body>
 
-名称查询<input id="ss"></input> 
+<span style="font-size: 12px;">名称查询:</span><input id="ss"></input> 
 <table id="dg"></table>
 
-<div id="dd"></div>  
+<div id="dd">
+	<form action="">
+		<table>
+			<tr>
+				<td colspan="2">选择课程</td>
+			</tr>
+			<tr>
+				<td>课程编号
+				:</td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
+</div> 
 </body>
 </html>

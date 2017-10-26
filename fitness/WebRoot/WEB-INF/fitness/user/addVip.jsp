@@ -37,7 +37,7 @@ function chaxun(){
 		}
 	});
 	$("#div").show();
-	alert($("#idNo").val())
+	alert($("#idNo").val());
 }
 function addvip(){
 	var vipcardid = $("#vipcardid").val();

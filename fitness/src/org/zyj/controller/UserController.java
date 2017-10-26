@@ -3,8 +3,6 @@ package org.zyj.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.zyj.service.ClazzService;
 import org.zyj.service.UserService;
 import org.zyj.utils.DataGrid;
-import org.zyj.vo.Clazz;
 import org.zyj.vo.User;
 
 import javax.annotation.Resource;
