@@ -28,6 +28,13 @@
     limit #{start},#{size}
   </select>
 
+  <select id="find" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user t
+    ORDER BY t.opentime DESC
+  </select>
+
   <select id="getCount" resultType="int">
     select
     count(1)

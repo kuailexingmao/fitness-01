@@ -19,4 +19,6 @@ public interface UserMapper {
     Integer getCount();
 
 	void deleteByCertifyno(String certifyno);
+
+	List<User> find();
 }

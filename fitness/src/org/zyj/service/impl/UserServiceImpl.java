@@ -1,14 +1,18 @@
 package org.zyj.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zyj.dao.TcuMapper;
 import org.zyj.dao.UserMapper;
 import org.zyj.service.UserService;
 import org.zyj.utils.DataGrid;
+import org.zyj.utils.ExcelUtils;
 import org.zyj.vo.User;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,8 +64,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = Throwable.class)
 	public void addUser(User user) {
 		userMapperDao.insert(user);
+	}
+
+	@Override
+	public void exportExcel(List<User> userList, ServletOutputStream out) {
+		ExcelUtils.exportUserExcel(userList, out);
+	}
+
+	@Override
+	public void importExcel(InputStream file, String excelFileName) {
+		List<User> listuser = ExcelUtils.importExcel(file, excelFileName);
+		for (User user : listuser) {
+			this.addUser(user);
+		}
+	}
+
+	@Override
+	public List<User> find() {
+		List<User> userList = userMapperDao.find();
+		return userList;
 	}
 
 }

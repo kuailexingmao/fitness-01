@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../suanfa/interviews/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../suanfa/interviews">
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/Airbnb" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/Amazon" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/Facebook" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/Google" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/LinkedIn" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/Twitter" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/Company/Uber" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../suanfa/interviews/CrackingTheCodingInterview/Chapter1ArraysAndStrings" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
